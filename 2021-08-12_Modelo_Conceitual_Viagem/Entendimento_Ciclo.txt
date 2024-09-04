@@ -1,0 +1,23 @@
+Ideia Principal: Padronização de email.
+
+Eles vão receber um email com o cliente falando o que ele quer fazer, para onde quer ir e quantas pessoas vão, ou seja, são as informações do pedido. 
+
+Os agentes não poderão interagir entre si, em relação aos orçamentos criados, cada um terá seu loguin com os seus orçamentos. Porém o chefe ve tudo.
+
+Cada email terá mais de uma opção de viagem, ou seja, mais de um orçamento para cada pedido. 
+
+Cada orçamento terá informações e custos diferentes, tendo por exemplo um com o translado e outro sem. 
+
+Cada orçamento deve ser indicado como valor por pessoa ou valor por casal, tendo seu valor totalizado também incluso. Além de uma descrição por escrito da forma de pagamento.
+
+Os estilos de viagens são: Praia, Cruzeiro, Neve, Disney, Internacional, Europa e Institucional.
+
+Para cada estilo de viagem, será gerada uma imagem para colocar como banner no email e também videos que poderão ser escolhidos pelo funcionário.
+
+Os itens que um orçamento pode ter são: Passagem Aérea, Hotel, Traslado, Passeios, Ingressos,  Assistência  Viagem,  Locação  de  Veículos,  Circuito, Trem  e  Cruzeiro. 
+
+Caso não haja informações sobre um dos itens, deverá ser omitido do orçamento.
+
+No email deve conter as informações do funcionário e da empresa, assim como dados de contato da mesma.
+
+O chefe poderá também gerenciar as senhas (do email e de loguin). 
