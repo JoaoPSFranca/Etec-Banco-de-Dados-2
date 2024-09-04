@@ -1,0 +1,108 @@
+drop schema if exists Viagens;
+
+create schema Viagens;
+
+use Viagens;
+
+create table tipo_usuario(
+	cd_tipo_usuario int,
+	nm_tipo_usuario varchar(100),
+	constraint pk_tipo_usuario primary key (cd_tipo_usuario)
+);
+
+create table filial (
+	cd_loja int,
+	nm_loja varchar(100),
+	nm_endereco_loja varchar(255),
+	nm_telefone varchar(20),
+	constraint pk_filial primary key (cd_loja)
+);
+
+create table item(
+	cd_item int,
+	nm_item varchar(100),
+	constraint pk_item primary key (cd_item)
+);
+
+create table tipo_valor(
+	cd_tipo_valor int,
+	nm_tipo_valor varchar(100),
+	constraint pk_tipo_valor primary key (cd_tipo_valor)
+);
+
+create table tipo_viagem(
+	cd_tipo_viagem int,
+	nm_tipo_viagem varchar(100),
+	constraint pk_tipo_viagem primary key (cd_tipo_viagem)
+);
+
+create table usuario(
+	nm_loguin varchar(100),
+	nm_usuario varchar(255),
+	nm_email varchar(100),
+	nm_senha_acesso varchar(64),
+	nm_senha_email varchar(64),
+	cd_loja int,
+	cd_tipo_usuario int,
+	constraint pk_usuario primary key (nm_loguin),
+	constraint fk_usuario_filial foreign key (cd_loja)
+		references filial (cd_loja),
+	constraint fk_usuario_tipo_usuario foreign key (cd_tipo_usuario)
+		references tipo_usuario (cd_tipo_usuario)
+);
+
+create table video(
+	cd_video int,
+	nm_link text,
+	nm_video varchar(100),
+	cd_tipo_viagem int,
+	constraint pk_video primary key(cd_video),
+	constraint fk_video_tipo_viagem foreign key (cd_tipo_viagem)
+		references tipo_viagem (cd_tipo_viagem)
+);
+
+create table orcamento(
+	cd_orcamento int,
+	nm_loguin varchar(100),
+	dt_orcamento date,
+	hr_orcamento time,
+	nm_cliente varchar(255),
+	ds_inicial text,
+	cd_tipo_viagem int,
+	ds_defesa text,
+	cd_video int,
+	constraint pk_orcamento primary key (cd_orcamento, nm_loguin),
+	constraint fk_orcamento_usuario foreign key (nm_loguin)
+		references usuario (nm_loguin),
+	constraint fk_orcamento_tipo_viagem foreign key (cd_tipo_viagem)
+		references tipo_viagem (cd_tipo_viagem),
+	constraint fk_orcamento_video foreign key (cd_video)
+		references video (cd_video)
+);
+
+create table opcao(
+	cd_opcao int,
+	cd_orcamento int,
+	nm_loguin varchar(100),
+	vl_opcao decimal(10,2),
+	nm_condicao text,
+	cd_tipo_valor int,
+	constraint pk_opcao primary key (cd_opcao, cd_orcamento, nm_loguin),
+	constraint fk_opcao_orcamento foreign key (cd_orcamento, nm_loguin)
+		references orcamento (cd_orcamento, nm_loguin),
+	constraint fk_opcao_tipo_valor foreign key (cd_tipo_valor)
+		references tipo_valor (cd_tipo_valor)
+);
+
+create table item_opcao(
+	cd_opcao int,
+	cd_orcamento int,
+	nm_loguin varchar(100),
+	cd_item int,
+	ds_item text,
+	constraint pk_item_opcao primary key (cd_opcao, cd_orcamento, nm_loguin, cd_item),
+	constraint fk_item_opcao_opcap foreign key (cd_opcao, cd_orcamento, nm_loguin)
+		references opcao (cd_opcao, cd_orcamento, nm_loguin),
+	constraint fk_item_opcao_item foreign key (cd_item)
+		references item (cd_item)
+);

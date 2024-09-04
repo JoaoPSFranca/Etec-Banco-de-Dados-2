@@ -1,0 +1,74 @@
+insert into tipo_usuario values (1, 'Administrador');
+insert into tipo_usuario values (2, 'Funcionario');
+select * from tipo_usuario;
+
+insert into filial values (1, 'Freddy Tour Santos', 'Av. Conselheiro Nebias, 1116 - Bouqueirão - Santos', '(13) 3254-9989');
+insert into filial values (2, 'Freddy Tour Guarujá', 'Av. Dom Pedro I, 254 - Enseada - Guarujá', '(13) 3533-7922');
+select * from filial;
+
+insert into item values (1, 'Passagem Aérea');
+insert into item values (2, 'Hotel');
+insert into item values (3, 'Translado');
+insert into item values (4, 'Passeios');
+insert into item values (5, 'Ingressos');
+insert into item values (6, 'Assistência  Viagem');
+insert into item values (7, 'Locação  de  Veículos');
+insert into item values (8, 'Circuito');
+insert into item values (9, 'Trem');
+insert into item values (10, 'Cruzeiro');
+select * from item;
+
+insert into tipo_valor values (1, 'Valor por Pessoa');
+insert into tipo_valor values (2, 'Valor por Casal');
+select * from tipo_valor;
+
+insert into tipo_viagem values (1, 'Praia');
+insert into tipo_viagem values (2, 'Cruzeiro');
+insert into tipo_viagem values (3, 'Neve');
+insert into tipo_viagem values (4, 'Disney');
+insert into tipo_viagem values (5, 'Internacional');
+insert into tipo_viagem values (6, 'Europa');
+insert into tipo_viagem values (7, 'Institucional');
+select * from tipo_viagem;
+
+insert into usuario values ('AlessandroFerreira', 'Alessandro Rocha Ferreira', 'Alessandro.Ferreira16@gmail.com', md5('27031990'), md5('20082020'), 1, 1);
+insert into usuario values ('FredericoFlexa21', 'Frederico Arco e Flexa', 'Frederico.Flexa21@gmail.com', md5('01031319'), md5('16042001'), 1, 2);
+insert into usuario values ('YedaRego35', 'Yêda Santos Rego', 'Yeda.Rego35@gmail.com', md5('09032016'), md5('12022019'), 2, 2);
+select * from usuario;
+
+insert into video values (11, 'https://www.youtube.com/watch?v=QupMm68T4PI', 'Top 10: Melhores Praias do Rio de Janeiro', 1);
+insert into video values (21, 'https://www.youtube.com/watch?v=0HQIeeJ2oo4', 'NÃO FAÇA UM CRUZEIRO SEM VER ISSO: SEGREDOS, DÚVIDAS RESPONDIDAS E COMO REALMENTE É VIAJAR DE NAVIO', 2);
+insert into video values (31, 'https://www.youtube.com/watch?v=0vXcM74Mi4w', '4 Destinos MAIS BARATOS para ver NEVE!', 3);
+insert into video values (41, 'https://www.youtube.com/watch?v=FCU0h5hVTfg', 'Quatro Parques Temáticos | Walt Disney World', 4);
+insert into video values (42, 'https://www.youtube.com/watch?v=n_wuOXDzAM4', 'Conheça o Epcot | Walt Disney World', 4);
+insert into video values (51, 'https://www.youtube.com/watch?v=K4wlANuDjvc', '10 dicas para planejar a sua primeira viagem ao exterior!', 5);
+insert into video values (61, 'https://www.youtube.com/watch?v=naC6K6Qrx4k', 'Como está sendo viajar pela Europa | França, Bélgica, Dinamarca e Suécia', 6);
+insert into video values (71, 'https://www.youtube.com/watch?v=xKFi6pl5FXY', 'Apresentação Institucional', 7);
+select * from video;
+
+insert into orcamento values (1456, 'FredericoFlexa21', '2021-08-23', '14:32:58', 'Rodrigo', 'Olá Rodrigo, como combinado, segue o orçamento para a sua viagem com a sua família para a Disney', 4, 'Nada reservado, apenas cotado. Valores sujeitos a disponibilidade de lugares e de tarifa no ato da compra. O cambio utilizado será o do dia do fechamento. Valores sujeitos a alteração cambial. A FerreiraTur reserva-se ao direito de alterar o orçamento acima informado a qualquer momento sem prévio aviso.', 42);
+insert into orcamento values (1457, 'YedaRego35', '2021-09-16', '10:50:35', 'Marcos', 'Olá Marcos, como combinado anteriormente, segue o orçamento para a sua viagem com a sua esposa para o Japão', 5, 'Nada reservado, apenas cotado. Valores sujeitos a disponibilidade de lugares e de tarifa no ato da compra. O cambio utilizado será o do dia do fechamento. Valores sujeitos a alteração cambial. A FerreiraTur reserva-se ao direito de alterar o orçamento acima informado a qualquer momento sem prévio aviso.', 51);
+insert into orcamento values (1458, 'FredericoFlexa21', '2021-09-19', '20:53:12', 'Juliana', 'Olá Juliana, como combinado, segue o orçamento para a sua viagem para a Islândia', 3, 'Nada reservado, apenas cotado. Valores sujeitos a disponibilidade de lugares e de tarifa no ato da compra. O cambio utilizado será o do dia do fechamento. Valores sujeitos a alteração cambial. A FerreiraTur reserva-se ao direito de alterar o orçamento acima informado a qualquer momento sem prévio aviso.', 31);
+select * from orcamento;
+
+insert into opcao values (1, 1456, 'FredericoFlexa21', 2000.00, 'em até 6x sem juros', 1);
+insert into opcao values (1, 1457, 'YedaRego35', 3000.00, 'em até 10x sem juros', 2);
+insert into opcao values (2, 1457, 'YedaRego35', 2200.00, 'à vista', 1);
+insert into opcao values (1, 1458, 'FredericoFlexa21', 3500.00, 'em até 12x sem juros', 1);
+select * from opcao;
+
+insert into item_opcao values (1, 1456, 'FredericoFlexa21', 1, 'Guarulhos - 13h - Econômica');
+insert into item_opcao values (1, 1456, 'FredericoFlexa21', 2, 'Hospedagem 4 Estrelas à 4km do Parque');
+insert into item_opcao values (1, 1456, 'FredericoFlexa21', 5, 'Ingresso para 2 dias no Parque');
+insert into item_opcao values (1, 1457, 'YedaRego35', 2, 'Hospedagem 5 Estrelas no Hotel Hiroshi');
+insert into item_opcao values (1, 1457, 'YedaRego35', 4, 'Passeio incluso: Visita ao Monte Fuji');
+insert into item_opcao values (2, 1457, 'YedaRego35', 1, 'Congonhas - 10h - Econômica');
+insert into item_opcao values (2, 1457, 'YedaRego35', 2, 'Hospedagem 5 Estrelas no Hotel Hiroshi');
+insert into item_opcao values (2, 1457, 'YedaRego35', 3, 'Uber pago pela empresa');
+insert into item_opcao values (2, 1457, 'YedaRego35', 4, 'Passeio incluso: Visita ao Monte Fuji');
+insert into item_opcao values (1, 1458, 'FredericoFlexa21', 1, 'Guarulhos - 15h - Executiva');
+insert into item_opcao values (1, 1458, 'FredericoFlexa21', 2, 'Hospedagem 5 estralas no Hotel The Retreat at Blue Lagoon Iceland');
+insert into item_opcao values (1, 1458, 'FredericoFlexa21', 3, 'Uber Black pago pela empresa');
+insert into item_opcao values (1, 1458, 'FredericoFlexa21', 4, 'Passeios pelas calotas de gelo e pelo Vulcão local');
+insert into item_opcao values (1, 1458, 'FredericoFlexa21', 6, 'Assistência para todas as necessidades referentes a alimentação e saúde');
+select * from item_opcao;
