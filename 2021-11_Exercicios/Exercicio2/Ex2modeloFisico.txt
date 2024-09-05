@@ -1,0 +1,78 @@
+drop Schema if exists empresaImportacao;
+Create Schema empresaImportacao;
+Use empresaImportacao;
+
+create table tipo_transporte(
+	cd_tipo_transporte int,
+	nm_tipo_transporte varchar(200),
+	constraint pk_tipo_transporte primary key (cd_tipo_transporte)
+);
+
+create table moeda(
+	cd_moeda int,
+	nm_moeda varchar(100),
+	constraint pk_moeda primary key (cd_moeda) 
+);
+
+create table fornecedor(
+	cd_fornecedor int, 
+	nm_fornecedor varchar(250),
+	ds_endereco text,
+	nm_telefone varchar(50),
+	nm_fax varchar(100),
+	constraint pk_fornecedor primary key (cd_fornecedor)
+);
+
+create table medida(
+	cd_medida int,
+	nm_medida varchar(100),
+	constraint pk_medida primary key (cd_medida)
+);
+
+create table mercadoria(
+	cd_mercadoria int,
+	nm_mercadoria varchar(200),
+	vl_mercadoria int,
+	cd_medida int,
+	constraint pk_mercadoria primary key (cd_mercadoria),
+	constraint fk_mercadoria_medida foreign key (cd_medida)
+		references medida (cd_medida)
+);
+
+create table contrato(
+	cd_contrato int,
+	dt_assinatura date,
+	dt_validade date,
+	vl_contrato int,
+	cd_moeda int,
+	cd_fornecedor int,
+	constraint pk_contrato primary key (cd_contrato),
+	constraint fk_contrato_moeda foreign key (cd_moeda)
+		references moeda (cd_moeda),
+	constraint fk_contrato_fornecedor foreign key (cd_fornecedor)
+		references fornecedor (cd_fornecedor)
+);
+
+create table transporte(
+	cd_transporte int,
+	cd_contrato int,
+	dt_partida date,
+	dt_chegada date,
+	cd_tipo_transporte int,
+	constraint pk_transporte primary key (cd_transporte),
+	constraint fk_transporte_tipo_transporte foreign key (cd_tipo_transporte)
+		references tipo_transporte (cd_tipo_transporte),
+	constraint fk_transporte_contrato foreign key (cd_contrato) 
+		references contrato (cd_contrato)
+);
+
+create table contrato_mercadoria(
+	cd_contrato int, 
+	cd_mercadoria int,
+	qt_mercadoria_comprada int,
+	constraint pk_contrato_mercadoria primary key (cd_contrato, cd_mercadoria),
+	constraint fk_contrato_mercadoria_contrato foreign key (cd_contrato)
+		references contrato (cd_contrato),
+	constraint fk_contrato_mercadoria_mercadoria foreign key (cd_mercadoria)
+		references mercadoria (cd_mercadoria)
+);

@@ -1,0 +1,25 @@
+1 - 
+select 
+	ip.cd_prato as "Código",
+	p.nm_prato as "Prato",
+	p.vl_prato as "Valor",
+	group_concat(i.nm_ingrediente) as "Ingredientes",
+	group_concat(ip.qt_ingrediente_prato) as "Quantidade de Igredientes"
+from itens_pratos ip
+join pratos p on (ip.cd_prato = p.cd_prato)
+join ingredientes i on (ip.cd_ingrediente = i.cd_ingrediente)
+group by ip.cd_prato;
+
+2 - 
+select 
+	e.cd_encomenda as "Código", 
+	c.nm_cliente as "Cliente", 
+	group_concat(p.nm_prato) as Pratos,
+	date_format(e.dt_encomenda, '%d/%m/%Y') as "Data", 
+	e.hr_encomenda as "Hora"
+from encomendas e
+join clientes c on (c.cd_cliente = e.cd_cliente)
+join itens_encomendas ie on (ie.cd_encomenda = e.cd_encomenda)
+join pratos p on (p.cd_prato = ie.cd_prato)
+where dt_encomenda = '2021/03/27'
+group by ie.cd_encomenda;

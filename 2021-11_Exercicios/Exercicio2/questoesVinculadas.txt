@@ -1,0 +1,19 @@
+﻿1 - 
+para listar as informações dos fornecedores:
+select
+	nm_fornecedor as Fornecedores,
+	ds_endereco as Endereço,
+	nm_telefone as Telefone
+from fornecedor 
+order by nm_fornecedor;
+
+2 - 
+Para criar o insert, deve primeiro criar o contrato, como no exemplo:
+insert into contrato values (155, '2021-11-25', '2021-12-02', 1900.00, '2021-11-27', '2021-11-29', 12, 21, 54);
+
+Depois, apenas adicionar os itens do contrato, como no exemplo:
+insert into contrato_mercadoria values (155, 41, 20);
+
+insert into contrato_mercadoria values (155, 42, 50);
+
+insert into contrato_mercadoria values (155, 43, 50);
